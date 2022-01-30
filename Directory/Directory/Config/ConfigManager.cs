@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace Directory.Config
 {
@@ -8,10 +7,10 @@ namespace Directory.Config
         public static IConfiguration AppSetting { get; }
         static ConfigManager()
         {
-            //AppSetting = new ConfigurationBuilder()
-            //        .SetBasePath(Directory.GetCurrentDirectory())
-            //        .AddJsonFile("appsettings.json")
-            //        .Build();
+            AppSetting = new ConfigurationBuilder()
+                    .SetBasePath(System.IO.Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json")
+                    .Build();
         }
     }
 }

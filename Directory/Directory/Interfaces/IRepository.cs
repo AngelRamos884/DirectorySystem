@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Directory.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,5 +12,7 @@ namespace Directory.Interfaces
         T GetItem(int id);
         void Update(T entity);
         void Create(T entity);
+
+        public ReturnExceptionModel SetException(Exception exe);
     }
 }

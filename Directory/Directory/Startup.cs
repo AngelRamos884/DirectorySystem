@@ -66,7 +66,7 @@ namespace Directory
             });
 
             #region Services
-            services.AddTransient<ITokenService, TokenService>();
+            services.AddSingleton<ITokenService, TokenService>();
             #endregion
 
             #region Repository
@@ -78,6 +78,13 @@ namespace Directory
 
             #region Connections
             services.AddDbContext<DirectoryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Directory")));
+            #endregion
+
+            #region NewtonsoftJson
+            services.AddControllersWithViews()
+                        .AddNewtonsoftJson(options =>
+                        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    );
             #endregion
         }
 

@@ -1,9 +1,13 @@
 ﻿using Directory.EFModels;
 using Directory.Interfaces;
+using Directory.Models;
+using Directory.Utils;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Directory.Repository
@@ -47,6 +51,38 @@ namespace Directory.Repository
             this.Save();
         }
 
+        public ReturnExceptionModel SetException(Exception exe)
+        {
+            if (exe is SqlException)
+            {
+                return new ReturnExceptionModel()
+                {
+                    StatusCode = C.SERVERERROR.ToString(),
+                    Message = C.DBError + ": " + exe.Message,
+                    IsSqlDbError = true
+                };
+            }
+            if (exe is WebException)
+            {
+                var e = exe as WebException;
+
+                return new ReturnExceptionModel()
+                {
+                    StatusCode = e.Status.ToString(),
+                    Message = e.Message,
+                    IsSqlDbError = false
+                };
+            }
+            else
+            {
+                return new ReturnExceptionModel()
+                {
+                    StatusCode = C.SERVERERROR.ToString(),
+                    Message = exe.Message,
+                    IsSqlDbError = false
+                };
+            }
+        }
         #endregion
     }
 }

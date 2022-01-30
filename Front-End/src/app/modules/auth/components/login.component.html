@@ -1,0 +1,61 @@
+<div class="hold-transition login-page" style="background-color:#262626">  <!--url(../../../assets/img/bgJH.png); -->
+    <div class="login-box limiter animated fadeInLeft">
+        
+        <div class="card" style="width: 320px; margin: auto;">
+            <div class="card-body login-card-body mt-4 mb-2">
+                <img src="../../assets/dist/img/jbl.png" style="width: 12rem; display: block; margin: auto;" alt="logo jabil">
+                
+                <div class="login-logo mt-3 mb-3" style="font-size:x-large">
+                    <!-- <h4>SerialCheck</h4> -->
+                    <img src="../../../../assets/img/Logo-Black-V2.png" alt="logo" style="width:8rem; margin-bottom: 8px;">
+                </div>
+        
+                <form id="form" [formGroup]="loginForm" (ngSubmit)="login()">
+
+                    <div class="input-group mb-3 input-group-sm">
+                        <input  type="text"
+                                formControlName="username"
+                                [ngClass]="{
+                                    'is-invalid': (!loginForm.get('username').valid && loginForm.get('username').dirty)
+                                    ||  (!loginForm.get('username').valid && loginForm!.get('username').touched )
+                                }"
+                                placeholder="Username"
+                                class="form-control">
+                        
+                        <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                        </div>
+                    </div>         
+            
+                    <div class="input-group mb-3 input-group-sm">
+                        <input  type="password"
+                                formControlName="password"
+                                [ngClass]="{
+                                    'is-invalid': (!loginForm.get('password').valid && loginForm.get('password').dirty)
+                                    ||  (!loginForm.get('password').valid && loginForm.get('password').touched )
+                                }"
+                                placeholder="Password"
+                                class="form-control">
+                        <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block mt-4 mb-3 btn-sm" [disabled]="loading">
+                        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" *ngIf="loading">
+                        </span>
+                        <span *ngIf="loading">Loading...</span>
+                        <div *ngIf="!loading">
+                            Sign In
+                        </div>
+                        
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

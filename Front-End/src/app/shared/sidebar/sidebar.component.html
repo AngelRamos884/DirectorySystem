@@ -1,0 +1,61 @@
+ <!-- Main Sidebar Container -->
+ <aside class="main-sidebar sidebar-dark-primary nav-info elevation-4 sidebar-no-expand" style="background-color: black;">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="../../../assets/img/visitas.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Directory System</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar" >
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="../../../assets/img/default.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{_menuService.displayName}}</a>
+        </div>
+      </div>
+      <!-- <div class="user-panel pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="../../../assets/img/visitas.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#/home" class="d-block disabled">{{_menuService.displayName}}</a>
+          <a href="#/home" class="d-block mt-1" style="font-size: .8em;"></a>
+          <a href="#/home" class="d-block mt-1" style="font-size: .8em;">{{_menuService.username}}</a>
+        </div>
+      </div>       -->
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column text-sm nav-flat nav-compact nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <!-- <li *ngFor="let menu of _menuService.menu"
+              class="nav-item has-treeview" >
+            <a href="#" class="nav-link">
+              <i [class]="menu.icon"></i>
+              <p>
+                {{menu.menuName}}
+                <i class="right fas fa-angle-left"></i>
+                <span class="right badge badge-danger">{{menu.subMenus.length}}</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" >
+              <li *ngFor="let submenu of menu.subMenus"
+                  class="nav-item">
+                <a routerLinkActive="active" [routerLink]="[submenu.route]" href='#' class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>{{submenu.subMenuName}}</p>
+                </a>
+              </li>
+            </ul>
+          </li> -->
+          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

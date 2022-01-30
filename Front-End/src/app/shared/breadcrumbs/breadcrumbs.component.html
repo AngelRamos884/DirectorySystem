@@ -1,0 +1,16 @@
+<section class="content-header">
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col-sm-6">          
+          <h2><i *ngIf="icon !== undefined" [class]="icon + ' fa-lg mr-2'" style="color: #36B4E5;"></i>{{ title }}</h2>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#/directory/info">Home</a></li>
+            <li class="breadcrumb-item active">Pag</li>
+            <li class="breadcrumb-item active">{{title}}</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>

@@ -90,6 +90,7 @@ export class DirectoryActionsPageComponent implements OnInit {
                                 this.contactForm.reset();
                                 this.telephoneNumbers  = [];
                                 this.store.dispatch(loadDirectory());
+                                this.isUpdate = false;
                               });
                         });
         }
@@ -163,6 +164,7 @@ export class DirectoryActionsPageComponent implements OnInit {
                                 this.contactForm.reset();
                                 this.telephoneNumbers  = [];
                                 this.store.dispatch(loadDirectory());
+                                this.isUpdate = false;
                               });
                         });
     }
@@ -193,6 +195,7 @@ export class DirectoryActionsPageComponent implements OnInit {
                                     this.contactForm.reset();
                                     this.telephoneNumbers  = [];
                                     this.store.dispatch(loadDirectory());
+                                    this.isUpdate = false;
                                   });
                             });
             return;
@@ -244,6 +247,7 @@ export class DirectoryActionsPageComponent implements OnInit {
                                                 Swal.close();
                                                 this.contactForm.reset();
                                                 this.telephoneNumbers  = [];
+                                                this.isUpdate = false;
                                                 this.store.dispatch(loadDirectory());
                                             });
                 if(response !== null || undefined){

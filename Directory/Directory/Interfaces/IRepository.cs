@@ -12,7 +12,7 @@ namespace Directory.Interfaces
         T GetItem(int id);
         void Update(T entity);
         void Create(T entity);
-
+        public void Remove(T entity);
         public ReturnExceptionModel SetException(Exception exe);
     }
 }

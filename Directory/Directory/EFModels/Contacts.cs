@@ -7,7 +7,7 @@ namespace Directory.EFModels
 {
     public class Contacts : Base
     {
-        public string Names { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         virtual public ICollection<TelephoneNumbers> TelephoneNumbers { get; set; }
         public Contacts()

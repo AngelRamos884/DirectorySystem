@@ -1,1 +1,153 @@
-<h1>Hi</h1>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form id="form" [formGroup]="contactForm" (ngSubmit)="save()">
+                    <div class="row">                     
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group input-group-sm">
+                                <label for="">First Name</label>
+                                <input
+                                    type="text"
+                                    formControlName="firstName"
+                                    placeholder="Type a firstName"
+                                    [ngClass]="{
+                                        'is-invalid': (!contactForm.get('firstName').valid && contactForm.get('firstName').dirty)
+                                        ||  (!contactForm.get('firstName').valid && contactForm.get('firstName').touched )
+                                    }"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="form-group input-group-sm">
+                                <label for="">Last Name</label>
+                                <input
+                                    type="text"
+                                    formControlName="lastName"
+                                    placeholder="Type a lastName"
+                                    [ngClass]="{
+                                        'is-invalid': (!contactForm.get('lastName').valid && contactForm.get('lastName').dirty)
+                                        ||  (!contactForm.get('lastName').valid && contactForm.get('lastName').touched )
+                                    }"
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-4 mt-2">
+                            <div class="input-group input-group-sm">
+                                <input #name type="text" class="form-control" (keyup)="typing(name)" id="addTel">
+                                <span class="input-group-append">
+                                  <button type="button" 
+                                          (click)="addTel($event)"
+                                          class="btn btn-info btn-flat">Add tel</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"  *ngIf="!(telephoneNumbers.length <= 0);" >
+                            <table class="table table-bordered ">
+                                <thead>
+                                  <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Number</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of telephoneNumbers; let i=index">
+                                      <td>{{i + 1}}</td>
+                                      <td>
+                                          {{item.telephoneNumber}}
+                                      </td>
+                                      <td>
+                                          <div class="row">
+                                              <div class="col">
+                                                  <button type="button"
+                                                            class="btn btn-sm"
+                                                            (click)="deleteTelephoneNumber(item, i)"  
+                                                            [ngClass]="{'btn-warning': isUpdate === true, 'btn-danger': isUpdate === false}">
+                                                        delete
+                                                    </button>
+                                          
+                                              </div>
+                                              <div class="col">
+                                                <button type="button"
+                                                        class="btn btn-sm btn-warning"
+                                                        *ngIf="isUpdate"
+                                                        (click)="updateTelephoneNumber(item)" >
+                                                    update
+                                                </button>   
+                                              </div>
+                                          </div>
+                                      </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                            <div *ngIf="(telephoneNumbers.length <= 0);">
+                                <div class="alert alert-info alert-dismissible">                                    
+                                    <h5><i class="icon fas fa-info"></i>Data not loaded</h5>
+                                        Telephone numbers not added
+                                  </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="row justify-content-end mt-1">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-2">
+                            <button 
+                                    type="submit" 
+                                    class="btn btn-sm btn-block"
+                                    [ngClass]="{'btn-warning': isUpdate === true, 'btn-primary': isUpdate === false}">
+                                Save  <i class="far fa-save btn-icons-size"></i><!--Salvar Registro-->
+                            </button>
+                        </div>
+                    </div>                              
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+          <div class="card">
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table id="datatable" 
+                             class="table table-striped table-bordered table-sm row-border hover" 
+                             datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                             >
+                          <thead>
+                          <tr>
+                              <th>Id</th>
+                              <th>Names</th>
+                              <th>Numbers</th>
+                              <th>Created By</th>
+                              <th>Created Date</th>
+                              <th>Actions</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let item of directory$ | async">
+                                  <td>{{item.id}}</td>
+                                  <td>{{item.firstName}} {{item.lastName}}</td>
+                                  <td [innerHTML]="renderValues(item.telephoneNumbers, null)" style="font-size: small;"></td>
+                                  <td>{{item.createdBy}}</td>
+                                  <td>{{item.createdDate | date: 'medium'}}</td>
+                                  <td>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-sm btn-warning btn-block" (click)="updateContact(item)" >
+                                                <i class="fas fa-pen-fancy"></i>
+                                             </button>
+                                            </div>
+                                        <div class="col">
+                                            <button class="btn btn-sm btn-danger btn-block" (click)="deleteContact(item)">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div> 
+              </div>
+          </div>
+    </div>
+</div>

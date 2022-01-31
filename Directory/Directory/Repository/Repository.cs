@@ -51,6 +51,12 @@ namespace Directory.Repository
             this.Save();
         }
 
+        public void Remove(T entity)
+        {
+            this.context.Set<T>().Remove(entity);
+            this.Save();
+        }
+
         public ReturnExceptionModel SetException(Exception exe)
         {
             if (exe is SqlException)
@@ -83,6 +89,7 @@ namespace Directory.Repository
                 };
             }
         }
+
         #endregion
     }
 }

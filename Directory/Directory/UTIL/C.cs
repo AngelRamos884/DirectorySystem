@@ -24,7 +24,7 @@ namespace Directory.Utils
         public const string LogginSuccess = "Loggin was succesfull";
         public const string LogginError = "Loggin error";
         public const string DBError = "Error to access to the DB";
-        public const string DATA_REMOVED = "Your data was removed from set up";        
+        public const string DATA_REMOVED = "Your data was deleted";        
         public const string OPTION_NOT_FOUND = "option not found";
         public static string File_Exist = "File already exist in folder, please change name to upload please.";
         public static string DONT_HAVE_ROL = "You dont have access rol to save data, please contact the admin";

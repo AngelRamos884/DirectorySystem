@@ -145,7 +145,7 @@ export class HelpService {
                 pageLength: 10,
                 processing: true,
                 dom: 'lBfrtip',
-                buttons: optBtn,
+                buttons: null,
                 "ordering":false
               };
         }
